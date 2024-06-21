@@ -9,8 +9,8 @@ This is a simple crypto trading bot with a web interface that connects to your c
 1. Clone the repository:
 
     ```sh
-    git clone <repository-url>
-    cd crypto_trading_bot
+    git clone https://github.com/SamuelPaschalson/cryptobot
+    cd cryptobot
     ```
 
 2. Install the required packages:
