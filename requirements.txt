@@ -1,0 +1,4 @@
+ccxt
+flask
+pandas
+pip install 'pandas<0.21'
