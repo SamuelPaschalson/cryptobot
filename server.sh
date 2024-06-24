@@ -10,7 +10,7 @@ PORT=5000
 if ! pgrep -f $PROCESS_NAME > /dev/null
 then
     echo "$(date): $PROCESS_NAME not running. Starting the server..." >> $LOG_FILE
-    # cd /path/to/your/app
+    cd app/
     $PROCESS_NAME $APP_NAME --bind 0.0.0.0:$PORT >> $LOG_FILE 2>&1 &
 else
     echo "$(date): $PROCESS_NAME is running." >> $LOG_FILE
