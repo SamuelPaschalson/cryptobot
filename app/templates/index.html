@@ -1,91 +1,72 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 	<head>
-		<meta charset="utf-8" />
-		<meta
-			name="viewport"
-			content="width=device-width, initial-scale=1, shrink-to-fit=no"
-		/>
 		<title>Crypto Trading Bot</title>
 	</head>
 	<body>
-		<div class="container">
-			<h1>Crypto Trading Bot</h1>
-			<form method="post">
-				<div>
-					<label for="exchange_url">Exchange URL:</label>
-					<input
-						type="text"
-						id="exchange_url"
-						name="exchange_url"
-						required
-					/>
-				</div>
-				<div>
-					<label for="username">Username:</label>
-					<input type="text" id="username" name="username" required />
-				</div>
-				<div>
-					<label for="password">Password:</label>
-					<input
-						type="password"
-						id="password"
-						name="password"
-						required
-					/>
-				</div>
-				<div>
-					<label for="strategy">Strategy:</label>
-					<select id="strategy" name="strategy">
-						<option value="scalping">Scalping</option>
-						<option value="day">Day Trading</option>
-						<option value="swing">Swing Trading</option>
-						<option value="position">Position Trading</option>
-					</select>
-				</div>
-				<div>
-					<label for="signals">Signals (comma-separated):</label>
-					<input type="text" id="signals" name="signals" required />
-				</div>
-				<div>
-					<label for="max_trades">Max Trades:</label>
-					<input
-						type="number"
-						id="max_trades"
-						name="max_trades"
-						required
-					/>
-				</div>
-				<div>
-					<label for="symbol">Symbol:</label>
-					<input type="text" id="symbol" name="symbol" required />
-				</div>
-				<div>
-					<label for="amount">Amount:</label>
-					<input type="number" id="amount" name="amount" required />
-				</div>
-				<div>
-					<label for="stop_loss_pct">Stop Loss Percentage:</label>
-					<input
-						type="number"
-						step="0.01"
-						id="stop_loss_pct"
-						name="stop_loss_pct"
-						required
-					/>
-				</div>
-				<div>
-					<label for="take_profit_pct">Take Profit Percentage:</label>
-					<input
-						type="number"
-						step="0.01"
-						id="take_profit_pct"
-						name="take_profit_pct"
-						required
-					/>
-				</div>
-				<button type="submit">Start Trading</button>
-			</form>
-		</div>
+		<h1>Crypto Trading Bot</h1>
+		<form action="/" method="post">
+			<label for="exchange_url">Exchange URL:</label><br />
+			<input
+				type="text"
+				id="exchange_url"
+				name="exchange_url"
+				required
+			/><br />
+			<label for="username">Username:</label><br />
+			<input type="text" id="username" name="username" required /><br />
+			<label for="password">Password:</label><br />
+			<input
+				type="password"
+				id="password"
+				name="password"
+				required
+			/><br />
+			<label for="strategy">Strategy:</label><br />
+			<select id="strategy" name="strategy">
+				<option value="scalping">Scalping</option>
+				<option value="day">Day Trading</option>
+				<option value="swing">Swing Trading</option>
+				<option value="position">Position Trading</option></select
+			><br />
+			<label for="signals">Signals (comma-separated):</label><br />
+			<input type="text" id="signals" name="signals" required /><br />
+			<label for="max_trades">Max Trades:</label><br />
+			<input
+				type="number"
+				id="max_trades"
+				name="max_trades"
+				required
+			/><br />
+			<label for="symbol">Symbol:</label><br />
+			<input type="text" id="symbol" name="symbol" required /><br />
+			<label for="amount">Amount:</label><br />
+			<input
+				type="number"
+				step="0.0001"
+				id="amount"
+				name="amount"
+				required
+			/><br />
+			<label for="stop_loss_percentage">Stop Loss Percentage:</label
+			><br />
+			<input
+				type="number"
+				step="0.01"
+				id="stop_loss_percentage"
+				name="stop_loss_percentage"
+				required
+			/><br />
+			<label for="take_profit_percentage">Take Profit Percentage:</label
+			><br />
+			<input
+				type="number"
+				step="0.01"
+				id="take_profit_percentage"
+				name="take_profit_percentage"
+				required
+			/><br />
+			<input type="submit" value="Start Trading" />
+		</form>
 	</body>
 </html>

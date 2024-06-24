@@ -1,21 +1,37 @@
+import time
 import ccxt
-from strategies import scalping_strategy, day_trading_strategy, swing_trading_strategy, position_trading_strategy
+from strategies import get_strategy
 
-def connect_to_exchange(exchange_url, username, password):
-    exchange_id = exchange_url.split('//')[1].split('.')[0]
-    exchange_class = getattr(ccxt, exchange_id)
-    exchange = exchange_class({
-        'uid': username,
-        'password': password,
-    })
-    return exchange
+class TradingBot:
+    def __init__(self, exchange_url, username, password, strategy, signals, max_trades, symbol, amount, stop_loss_percentage, take_profit_percentage):
+        self.exchange_url = exchange_url
+        self.username = username
+        self.password = password
+        self.strategy = strategy
+        self.signals = signals
+        self.max_trades = max_trades
+        self.symbol = symbol
+        self.amount = amount
+        self.stop_loss_percentage = stop_loss_percentage
+        self.take_profit_percentage = take_profit_percentage
+        self.exchange = self.login()
 
-def execute_trades(exchange, signals, strategy, max_trades, stop_loss_pct, take_profit_pct, symbol, amount):
-    strategy_function = {
-        'scalping': scalping_strategy,
-        'day': day_trading_strategy,
-        'swing': swing_trading_strategy,
-        'position': position_trading_strategy,
-    }.get(strategy, scalping_strategy)
-    
-    strategy_function(exchange, symbol, signals, max_trades, stop_loss_pct, take_profit_pct, amount)
+    def login(self):
+        exchange = ccxt.binance({
+            'apiKey': self.username,
+            'secret': self.password,
+        })
+        return exchange
+
+    def run(self):
+        strategy = get_strategy(self.strategy)
+        return strategy(self)
+
+    def execute_trade(self, side):
+        order = self.exchange.create_order(
+            symbol=self.symbol,
+            type='market',
+            side=side,
+            amount=self.amount
+        )
+        return order
