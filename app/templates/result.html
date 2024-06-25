@@ -1,18 +1,29 @@
 <!DOCTYPE html>
 <html lang="en">
 	<head>
-		<meta charset="utf-8" />
+		<meta charset="UTF-8" />
 		<meta
 			name="viewport"
 			content="width=device-width, initial-scale=1, shrink-to-fit=no"
 		/>
-		<title>Crypto Trading Result</title>
+		<link
+			href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+			rel="stylesheet"
+		/>
+		<title>Trading Result</title>
 	</head>
 	<body>
-		<div class="container">
-			<h1>Crypto Trading Result</h1>
-			<p>{{ result }}</p>
-			<a href="/">Go Back</a>
+		<div class="container mt-5">
+			<h1 class="text-center">Trading Result</h1>
+			<div class="alert alert-info" role="alert">
+				<p>{{ result }}</p>
+			</div>
+			<div class="text-center">
+				<a href="/" class="btn btn-primary">Back to Home</a>
+			</div>
 		</div>
+		<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+		<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 	</body>
 </html>

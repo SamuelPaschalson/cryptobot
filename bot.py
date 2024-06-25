@@ -3,10 +3,11 @@ import ccxt
 from strategies import get_strategy
 
 class TradingBot:
-    def __init__(self, exchange_url, username, password, strategy, signals, max_trades, symbol, amount, stop_loss_percentage, take_profit_percentage):
-        self.exchange_url = exchange_url
-        self.username = username
-        self.password = password
+    def __init__(self, exchange_name, api_key, api_secret, use_demo, strategy, signals, max_trades, symbol, amount, stop_loss_percentage, take_profit_percentage):
+        self.exchange_name = exchange_name
+        self.api_key = api_key
+        self.api_secret = api_secret
+        self.use_demo = use_demo
         self.strategy = strategy
         self.signals = signals
         self.max_trades = max_trades
@@ -17,10 +18,15 @@ class TradingBot:
         self.exchange = self.login()
 
     def login(self):
-        exchange = ccxt.binance({
-            'apiKey': self.username,
-            'secret': self.password,
+        exchange_class = getattr(ccxt, self.exchange_name)
+        exchange = exchange_class({
+            'apiKey': self.api_key,
+            'secret': self.api_secret,
         })
+
+        if self.use_demo and hasattr(exchange, 'set_sandbox_mode'):
+            exchange.set_sandbox_mode(True)
+
         return exchange
 
     def run(self):
